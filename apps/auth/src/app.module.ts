@@ -14,7 +14,6 @@ import {
   AuthMiddleware,
 } from '@app/common';
 import { CompanyModel, DatabaseModule, UserModel } from '@app/database';
-import { SettingsModule } from 'apps/settings1/src/settings.module';
 
 @Module({
   imports: [
@@ -31,7 +30,6 @@ import { SettingsModule } from 'apps/settings1/src/settings.module';
     }),
     UserModule,
     AuthModule,
-    SettingsModule,
   ],
   providers: [{ provide: APP_FILTER, useClass: AllExceptionsFilter }],
 })
