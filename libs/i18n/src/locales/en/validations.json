@@ -1,0 +1,31 @@
+{
+  "PasswordMatchCognitoRules": "Password did not conform with policy.",
+  "IsAlphanumericSpaces": "This field can contains letters and numbers only",
+  "isAlphanumeric": "This field can contains letters and numbers only",
+  "isEmail": "This field must be a valid email address",
+  "isNotEmpty": "This field cannot be empty",
+  "ValidPhone": "Entered phone number is invalid",
+  "minLength": "This field needs to have at least {constraints.0} characters",
+  "maxLength": "This field can have up to {constraints.0} characters",
+  "isNumber": "This field can contain numbers only",
+  "arrayMinSize": "This field must contain at least {constraints.0} items",
+  "pleaseWait": "You must wait {seconds} seconds",
+  "isNumberString": "This field must contain numbers only",
+  "isEnum": "This field must be one of the following items: {constraints.1}",
+  "isArray": "The field must be in an array form",
+  "HasMimeType": "The file uploaded must be one of the following mime types: {constraints.0}",
+  "IsBucketFile": "This field is not in a valid bucket file format",
+  "Match": "This field must match the {constraints.0} field",
+  "InvalidCognitoPassword": "Password does not meet the requirements",
+  "isUuid": "This field must be a valid UUID",
+  "isBoolean": "This field must be a boolean",
+  "UserAlreadyExists": "An account with the given email already exists.",
+  "FailedToCreateCognitoUser": "Failed to create user",
+  "FailedToUpdateCognitoUser": "Failed to update user",
+  "FailedToDeleteCognitoUser": "Failed to delete user",
+  "UserNotFound": "Incorrect username or password.",
+  "Db": {
+    "email_not_unique": "An account with the given email already exists.",
+    "sub_is_null": "The user does not exist"
+  }
+}

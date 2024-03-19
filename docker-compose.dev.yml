@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  gateway:
+    image: nginx:latest
+    container_name: melingo-ai-gateway
+    restart: always
+    ports:
+      - '3030:80'
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - melingo-ai-network
+  database:
+    image: postgres:latest
+    container_name: melingo-ai-db
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - '5065:5432'
+    volumes:
+      - melingo-ai-db:/var/lib/postgresql/data
+    networks:
+      - melingo-ai-network
+  # redis:
+  #   image: redis:latest
+  #   container_name: melingo-ai-redis
+  #   restart: always
+  #   ports:
+  #     - '6380:6379'
+  #   networks:
+  #     - melingo-ai-network
+
+volumes:
+  melingo-ai-db:
+    driver: local
+
+networks:
+  melingo-ai-network:
+    driver: bridge

@@ -1,0 +1,20 @@
+{
+  "IsAlphanumericSpaces": "This field can contains letters and numbers only",
+  "isAlphanumeric": "This field can contains letters and numbers only",
+  "isEmail": "שדה זה חייב להיות כתובת מייל תקנית",
+  "isNotEmpty": "שדה זה הינו שדה חובה",
+  "ValidPhone": "Entered phone number is invalid",
+  "minLength": "This field needs to have at least {constraints.0} characters",
+  "maxLength": "This field can have up to {constraints.0} characters",
+  "isNumber": "This field can contain numbers only",
+  "arrayMinSize": "This field must contain at least {constraints.0} items",
+  "pleaseWait": "You must wait {seconds} seconds",
+  "isNumberString": "This field must contain numbers only",
+  "isEnum": "This field must be one of the following items: {constraints.1}",
+  "isArray": "The field must be in an array form",
+  "HasMimeType": "The file uploaded must be one of the following mime types: {constraints.0}",
+  "IsBucketFile": "This field is not in a valid bucket file format",
+  "Match": "This field must match the {constraints.0} field",
+  "InvalidCognitoPassword": "Password does not meet the requirements",
+  "isBoolean": "This field must be a boolean"
+}

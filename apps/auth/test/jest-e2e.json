@@ -1,0 +1,21 @@
+{
+  "moduleFileExtensions": [
+    "js",
+    "json",
+    "ts"
+  ],
+  "rootDir": ".",
+  "testEnvironment": "node",
+  "testRegex": ".e2e-spec.ts$",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "moduleNameMapper": {
+    "@app/aws/(.*)": "<rootDir>/../libs/aws/src/$1",
+    "@app/aws": "<rootDir>/../libs/aws/src",
+    "@app/i18n/(.*)": "<rootDir>/../libs/i18n/src/$1",
+    "@app/i18n": "<rootDir>/../libs/i18n/src",
+    "@app/common/(.*)": "<rootDir>/../libs/common/src/$1",
+    "@app/common": "<rootDir>/../libs/common/src"
+  }
+}
