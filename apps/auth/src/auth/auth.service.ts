@@ -23,7 +23,12 @@ import {
   VerifyForgotPasswordResponse,
 } from '@app/types';
 import { LangService } from '@app/i18n';
-import { DatabaseErrors, UserModel, UserTransformer } from '@app/database';
+import {
+  CompanyModel,
+  DatabaseErrors,
+  UserModel,
+  UserTransformer,
+} from '@app/database';
 
 @Injectable()
 export class AuthService {
@@ -72,6 +77,29 @@ export class AuthService {
     // Validate that the user exists, if not throw an error
     const userExists = await this.userRepo.findOne({
       where: { email: body.email },
+      include: [
+        {
+          model: CompanyModel,
+          attributes: [
+            'createdAt',
+            'updatedAt',
+            'businessName',
+            'email',
+            'phone',
+            'fax',
+            'displayLinks',
+            'linkWithPicture',
+            'chatbotPosition',
+            'chatbotName',
+            'chatbotSubtitle',
+            'themeColor',
+            'fontColor',
+            'buttonColor',
+            'backgroundPattern',
+            'logo',
+          ],
+        },
+      ],
     });
 
     if (!userExists) {
@@ -96,6 +124,8 @@ export class AuthService {
     }
 
     const { AccessToken, RefreshToken } = result.AuthenticationResult;
+
+    console.log('userExists', userExists);
 
     return {
       user: await this.userTransformer.toJson(userExists),
