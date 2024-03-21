@@ -125,8 +125,6 @@ export class AuthService {
 
     const { AccessToken, RefreshToken } = result.AuthenticationResult;
 
-    console.log('userExists', userExists);
-
     return {
       user: await this.userTransformer.toJson(userExists),
       accessToken: AccessToken,

@@ -40,8 +40,43 @@ export class SettingsService {
   async update(
     id: number,
     updateCompanyDto: UpdateCompanyDTO
-  ): Promise<CompanyModel> {
-    return await this.repository.updateById(id, updateCompanyDto);
+  ): Promise<Partial<CompanyModel>> {
+    // Perform the update operation
+    const [numberOfAffectedRows] = await this.repository.update(
+      updateCompanyDto,
+      {
+        where: { id },
+      }
+    );
+
+    // Throw an error if no rows were affected (meaning the company was not found)
+    if (numberOfAffectedRows === 0) {
+      throw new Error('Company not found.');
+    }
+
+    // Fetch the updated company
+    const updatedCompany = await this.repository.findById(id, {
+      attributes: [
+        'id',
+        'businessName',
+        'email',
+        'phone',
+        'fax',
+        'chatbotName',
+        'chatbotSubtitle',
+        'themeColor',
+        'fontColor',
+        'buttonColor',
+        'chatbotPosition',
+      ],
+    });
+
+    if (!updatedCompany) {
+      throw new Error('Company not found after update.');
+    }
+
+    // Return the updated company data
+    return updatedCompany.get({ plain: true });
   }
 
   async delete(id: number): Promise<void> {
