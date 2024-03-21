@@ -15,6 +15,7 @@ export class UserTransformer extends BaseTransformer<UserModel> {
 
     if (company) {
       companyDetails = {
+        id: company.id,
         createdAt: company.createdAt,
         updatedAt: company.updatedAt,
         businessName: company.businessName,

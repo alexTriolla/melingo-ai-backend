@@ -81,6 +81,7 @@ export class AuthService {
         {
           model: CompanyModel,
           attributes: [
+            'id',
             'createdAt',
             'updatedAt',
             'businessName',
