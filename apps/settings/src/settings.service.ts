@@ -37,10 +37,7 @@ export class SettingsService {
     return company;
   }
 
-  async update(
-    id: number,
-    updateCompanyDto: UpdateCompanyDTO
-  ): Promise<CompanyModel> {
+  async update(id: number, updateCompanyDto: UpdateCompanyDTO) {
     const [numberOfAffectedRows, [updatedCompany]] =
       await this.companyRepo.update(updateCompanyDto, {
         where: { id },

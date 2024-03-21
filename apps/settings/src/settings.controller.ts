@@ -25,7 +25,10 @@ export class SettingsController {
   constructor(private readonly settingsService: SettingsService) {}
 
   @Post('/')
-  async create(@Body() createCompanyDto: CreateCompanyDTO, @Res() res: Response) {
+  async create(
+    @Body() createCompanyDto: CreateCompanyDTO,
+    @Res() res: Response
+  ) {
     const newCompany = await this.settingsService.create(createCompanyDto);
     return res.status(201).json(newCompany); // Explicitly returning JSON response with status code
   }
@@ -42,7 +45,11 @@ export class SettingsController {
     @Body() updateCompanyDto: UpdateCompanyDTO,
     @Res() res: Response
   ) {
-    const updatedCompany = await this.settingsService.update(+id, updateCompanyDto);
+
+    const updatedCompany = await this.settingsService.update(
+      +id,
+      updateCompanyDto
+    );
     return res.json(updatedCompany); // Explicitly returning JSON response
   }
 
