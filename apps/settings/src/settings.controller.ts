@@ -45,12 +45,11 @@ export class SettingsController {
     @Body() updateCompanyDto: UpdateCompanyDTO,
     @Res() res: Response
   ) {
-
     const updatedCompany = await this.settingsService.update(
       +id,
       updateCompanyDto
     );
-    return res.json(updatedCompany); // Explicitly returning JSON response
+    return res.json(updatedCompany); 
   }
 
   @Delete('/:id')

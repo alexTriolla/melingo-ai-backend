@@ -4,9 +4,13 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 import { SettingsModule } from './settings.module';
 import { configuration, validationPipe } from '@app/common';
+import * as express from 'express';
+
 
 async function bootstrap() {
   const app = await NestFactory.create(SettingsModule);
+  
+  app.use(express.json());
 
   app.enableCors({
     origin: '*',

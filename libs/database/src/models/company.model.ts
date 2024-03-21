@@ -25,6 +25,13 @@ export class CompanyModel extends Model<Company> {
   updatedAt: Date;
 
   @Column({
+    type: DataType.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  })
+  id: number;
+
+  @Column({
     type: DataType.STRING,
     allowNull: false,
   })

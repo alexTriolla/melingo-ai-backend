@@ -1,17 +1,70 @@
+import {
+  IsOptional,
+  IsString,
+  IsBoolean,
+  IsEmail,
+  ValidateIf,
+  IsInt,
+} from 'class-validator';
+
 export class UpdateCompanyDTO {
-  id: number;
-  businessName: string;
-  email: string;
-  phone: string;
-  fax: string;
-  displayLinks: boolean;
-  linkWithPicture: boolean;
-  chatbotPosition: string;
-  chatbotName: string;
-  chatbotSubtitle: string;
-  themeColor: string;
-  fontColor: string;
-  buttonColor: string;
-  backgroundPattern: string;
-  logo: string;
+  @IsOptional()
+  @IsInt()
+  id?: number;
+
+  @IsOptional()
+  @IsString()
+  businessName?: string;
+
+  @IsOptional()
+  @IsEmail()
+  email?: string;
+
+  @IsOptional()
+  @IsString()
+  phone?: string;
+
+  @IsOptional()
+  @IsString()
+  fax?: string;
+
+  @IsOptional()
+  @IsBoolean()
+  displayLinks?: boolean;
+
+  @IsOptional()
+  @IsBoolean()
+  linkWithPicture?: boolean;
+
+  @IsOptional()
+  @IsString()
+  chatbotPosition?: string;
+
+  @IsOptional()
+  @IsString()
+  chatbotName?: string;
+
+  @IsOptional()
+  @IsString()
+  chatbotSubtitle?: string;
+
+  @IsOptional()
+  @IsString()
+  themeColor?: string;
+
+  @IsOptional()
+  @IsString()
+  fontColor?: string;
+
+  @IsOptional()
+  @IsString()
+  buttonColor?: string;
+
+  @IsOptional()
+  @IsString()
+  backgroundPattern?: string;
+
+  @IsOptional()
+  @IsString()
+  logo?: string;
 }

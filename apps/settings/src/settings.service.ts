@@ -12,7 +12,7 @@ import {
 import { BaseResponse, IUser, IUserRole } from '@app/types';
 import { CreateUserDTO, UpdateUserDTO } from '@app/common/dto/users';
 import { CognitoService } from '@app/aws';
-import { PaginateRequestDto, TranslatedException } from '@app/common';
+import { PaginateRequestDto } from '@app/common';
 import { CreateCompanyDTO } from '@app/common/dto/settings/CreateCompany.dto';
 import { UpdateCompanyDTO } from '@app/common/dto/settings/UpdateCompany.dto';
 
@@ -37,18 +37,11 @@ export class SettingsService {
     return company;
   }
 
-  async update(id: number, updateCompanyDto: UpdateCompanyDTO) {
-    const [numberOfAffectedRows, [updatedCompany]] =
-      await this.companyRepo.update(updateCompanyDto, {
-        where: { id },
-        returning: true, // This option is specific to PostgreSQL
-      });
-
-    if (numberOfAffectedRows === 0) {
-      throw new TranslatedException('Company not found.', HttpStatus.NOT_FOUND);
-    }
-
-    return updatedCompany;
+  async update(
+    id: number,
+    updateCompanyDto: UpdateCompanyDTO
+  ): Promise<CompanyModel> {
+    return await this.repository.updateById(id, updateCompanyDto);
   }
 
   async delete(id: number): Promise<void> {
@@ -57,7 +50,7 @@ export class SettingsService {
     });
 
     if (numberOfDeletedRows === 0) {
-      throw new TranslatedException('Company not found.', HttpStatus.NOT_FOUND);
+      throw new Error('Company not found.');
     }
   }
 
@@ -84,7 +77,7 @@ export class SettingsService {
     });
 
     if (!company) {
-      throw new TranslatedException('Company not found.', HttpStatus.NOT_FOUND);
+      throw new Error('Company not found.');
     }
 
     return company;
