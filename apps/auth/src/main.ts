@@ -12,7 +12,10 @@ async function bootstrap() {
 
   app.enableCors({
     origin: '*',
+    allowedHeaders:
+      'Origin, X-Requested-With, Content-Type, Accept, Authorization',
   });
+
   app.useGlobalPipes(validationPipe);
   app.setGlobalPrefix(`v${configuration().apiVersion}`);
 

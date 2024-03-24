@@ -8,7 +8,7 @@ module.exports = {
     // Specific user details
     const specificUser = [
       {
-        sub: faker.datatype.uuid(),
+        sub: '3ad302cc-d0a1-7011-b7a7-ebdafb4de103',
         companyId: 1,
         role: 'Admin',
         email: 'nimrod+12@triolla.io',

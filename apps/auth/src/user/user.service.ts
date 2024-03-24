@@ -1,7 +1,12 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 
-import { DatabaseErrors, UserModel, UserTransformer } from '@app/database';
+import {
+  CompanyModel,
+  DatabaseErrors,
+  UserModel,
+  UserTransformer,
+} from '@app/database';
 import { IUser } from '@app/types';
 import { TranslatedException } from '@app/common';
 
@@ -18,6 +23,30 @@ export class UserService {
       where: {
         sub: user.sub,
       },
+      include: [
+        {
+          model: CompanyModel,
+          attributes: [
+            'id',
+            'createdAt',
+            'updatedAt',
+            'businessName',
+            'email',
+            'phone',
+            'fax',
+            'displayLinks',
+            'linkWithPicture',
+            'chatbotPosition',
+            'chatbotName',
+            'chatbotSubtitle',
+            'themeColor',
+            'fontColor',
+            'buttonColor',
+            'backgroundPattern',
+            'logo',
+          ],
+        },
+      ],
     });
 
     if (!userEntity) {

@@ -6,6 +6,7 @@ import {
   HttpCode,
   HttpStatus,
   Post,
+  UseGuards,
 } from '@nestjs/common';
 
 import { CognitoService } from '@app/aws';
@@ -20,6 +21,8 @@ import {
   VerifyForgotPasswordDto,
   ForceChangePasswordDto,
 } from '@app/common';
+import { AuthenticationGuard } from '@nestjs-cognito/auth';
+import { json } from 'sequelize';
 
 @ApiTags('Auth')
 @Controller()

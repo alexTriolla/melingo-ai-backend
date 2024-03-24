@@ -23,4 +23,13 @@ export class UserController {
     console.log('user', user);
     return new ServiceResponse(await this.userService.findUser(user));
   }
+
+  @Get('check-session')
+  @UseGuards(AuthenticationGuard)
+  async checkSession(@CognitoUser() user: IUser) {
+    return new ServiceResponse({
+      message: 'Session is valid',
+      user: await this.userService.findUser(user),
+    });
+  }
 }
